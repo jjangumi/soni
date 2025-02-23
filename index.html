@@ -16,16 +16,16 @@
     <style>
         /* 드롭다운 버튼 크기 조정 */
         #dropdownMenuButton {
-            width: 200px; /* 버튼 너비 */
-            height: 50px; /* 버튼 높이 */
-            font-size: 12px; /* 버튼 글자 크기 */
+            width: 300px; /* 버튼 너비 */
+            height: 60px; /* 버튼 높이 */
+            font-size: 16px; /* 버튼 글자 크기 */
+            padding: 10px; /* 버튼 안쪽 여백 */
         }
     </style>
 </head>
 <body>
-<div class="container">
+<div class="container mt-4">
     <label>
-        <br>
         <br>
         이름 <input type="text" size="10" class="form-control mb-3">
         나이 <input type="number" size="10" class="form-control mb-3">
@@ -37,9 +37,9 @@
             원하는 시간대를 선택해주세요
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><a class="dropdown-item" href="#">오전 9시</a></li>
-            <li><a class="dropdown-item" href="#">오전 10시</a></li>
-            <li><a class="dropdown-item" href="#">오후 2시</a></li>
+            <li><a class="dropdown-item" href="#" data-time="오전 9시">오전 9시</a></li>
+            <li><a class="dropdown-item" href="#" data-time="오전 10시">오전 10시</a></li>
+            <li><a class="dropdown-item" href="#" data-time="오후 2시">오후 2시</a></li>
         </ul>
     </div>
 </div>
@@ -49,5 +49,17 @@
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"
 ></script>
+
+<script>
+    // 드롭다운 항목을 클릭했을 때 해당 시간대로 버튼 텍스트 변경
+    document.querySelectorAll('.dropdown-item').forEach(function(item) {
+        item.addEventListener('click', function(e) {
+            e.preventDefault(); // 링크 기본 동작 방지
+            var selectedTime = item.getAttribute('data-time'); // 선택된 시간 가져오기
+            document.getElementById('dropdownMenuButton').innerText = selectedTime; // 버튼 텍스트 변경
+        });
+    });
+</script>
+
 </body>
 </html>
